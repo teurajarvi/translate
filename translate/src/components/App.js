@@ -1,5 +1,6 @@
 import React from "react";
 import UserCreate from "./UserCreate";
+import LanguageContext from "../contexts/LanguageContext";
 
 class App extends React.Component {
   state = { language: "english" };
@@ -8,6 +9,10 @@ class App extends React.Component {
     this.setState({ language });
   };
 
+  /* Note: propery name "value" is a special property
+     of the LanguageContext.Provider
+     Also the Provider is very much different thing than
+     Redux Provider! */
   render() {
     return (
       <div className='ui container'>
@@ -22,7 +27,9 @@ class App extends React.Component {
             onClick={() => this.onLanguageChange("dutch")}
           />
         </div>
-        <UserCreate />
+        <LanguageContext.Provider value={this.state.language}>
+          <UserCreate />
+        </LanguageContext.Provider>
       </div>
     );
   }
