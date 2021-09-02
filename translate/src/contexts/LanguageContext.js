@@ -19,7 +19,8 @@ export class LanguageStore extends React.Component {
      it renders f.e. "Context" in this case. */
   render() {
     return (
-      <Context.Provider value={{ ...this.state, onLanguageChange }}>
+      <Context.Provider
+        value={{ ...this.state, onLanguageChange: this.onLanguageChange }}>
         {this.props.children}
       </Context.Provider>
     );
